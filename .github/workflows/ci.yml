@@ -2,8 +2,8 @@ name: Tarea Automatizada de ejecución de pruebas
 
 env:
   DOTNET_VERSION: '8.x'                     # la versión de .NET
-  SONAR_ORG: 'sergio-colque-ponce'                    # Nombre de la organización de sonar cloud
-  SONAR_PROJECT: 'sergio-colque-ponce_bancaapp'        # Key ID del proyecto de sonar
+  SONAR_ORG: 'JuanLuna'                    # Nombre de la organización de sonar cloud
+  SONAR_PROJECT: 'lunajuarezjuan_bancaapp'        # Key ID del proyecto de sonar
 on:
   push:
     branches: [ "main" ]
@@ -56,7 +56,7 @@ jobs:
         run: dotnet tool install -g SpecFlow.Plus.LivingDoc.CLI
       - name: Generate living doc
         run: livingdoc test-assembly ./Bank.Domain.Tests/bin/Debug/net8.0/Bank.Domain.Tests.dll -t ./Bank.Domain.Tests/bin/Debug/net8.0/TestExecution.json -o ./report/index.html
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v3
         with:
           name: specflow
           path: report
